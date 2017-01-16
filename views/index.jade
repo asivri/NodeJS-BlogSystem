@@ -1,16 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sollicitudin neque eget dolor gravida, et vehicula
-    nunc molestie. Proin tincidunt augue at orci aliquet, non congue dolor sagittis. Pellentesque elit arcu, tincidunt
-    non dolor sed, pharetra molestie lectus. Sed maximus erat felis, eget consectetur erat tincidunt in. Aenean
-    porttitor purus leo, eget finibus libero pharetra at. Suspendisse suscipit dictum auctor. Nunc luctus magna in leo
-    maximus placerat nec sed turpis. Nam id diam consequat, lobortis odio nec, pharetra orci. Class aptent taciti
-    sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla tincidunt lectus id arcu sagittis
-     sagittis. Donec nec mauris leo. Vestibulum nec metus vel nunc mattis molestie. Pellentesque est erat, pulvinar
-     id viverra interdum, dictum in risus.
+
+  body
+    ul.nav.nav-pills.nav-stacked
+      .row
+        .col-md-3
+          img.img-circle(src='https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAcHAAAAJDliNTc1NzFjLTIzN2EtNDA0NS1iN2JjLWIyMzUyOGY3ZDA3Ng.jpg')
+          br
+          h3.
+            Ahmet Ozan Sivri
+          br
+          br
+
+          h5.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a nulla aliquam, viverra nunc sit amet,
+             elementum purus. Quisque id velit aliquet, egestas ex sit amet, lobortis tortor. Nunc vitae turpis eget diam
+              bibendum maximus. Nullam ultricies pulvinar purus, vel sodales augue. In ultricies pellentesque mauris
+              maximus gravida. Proin consectetur cursus enim. Maecenas interdum pulvinar nunc.
+
+          br
+          br
+
+          h6.
+            Categories
+          h8
+            li
+              a(href='/category/a') Category A
+
+            li
+              a(href='/category/b') Category B
+
+            li
+              a(href='/category/c') Category C
+
 
 
 
