@@ -1,7 +1,42 @@
 doctype html
-html
+html(lang='en')
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Welcome
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
   body
-    block content
+      .col-md-3
+        img.img-circle(src='https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAcHAAAAJDliNTc1NzFjLTIzN2EtNDA0NS1iN2JjLWIyMzUyOGY3ZDA3Ng.jpg')
+        br
+        h3.
+          Ahmet Ozan Sivri
+        br
+        br
+
+        h5.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a nulla aliquam, viverra nunc sit amet,
+           elementum purus. Quisque id velit aliquet, egestas ex sit amet, lobortis tortor. Nunc vitae turpis eget diam
+            bibendum maximus. Nullam ultricies pulvinar purus, vel sodales augue. In ultricies pellentesque mauris
+            maximus gravida. Proin consectetur cursus enim. Maecenas interdum pulvinar nunc.
+
+        br
+        br
+
+        h6.
+          Categories
+        h8
+          li
+            a(href='/category/A') Category A
+
+          li
+            a(href='/category/B') Category B
+
+          li
+            a(href='/category/C') Category C
+
+
+
+
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/javascripts/bootstrap.js')
