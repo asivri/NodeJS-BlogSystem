@@ -2,8 +2,18 @@ extends layout
 
 block content
 
+
   body
-    ul.nav.nav-pills.nav-stacked
+    if posts
+      each post, i in posts
+        .post
+          h1
+            a(href='/posts/show/#{post.title}')=post.title
+          h5.meta Category: #{post.category}, Author: #{post.author} on #{post.date)
+          p #{post.body}
+          a.btn.btn-secondary.btn-lg.btn-block(href='/posts/show/#{post.title}', type='button') Read More
+        br
+   // ul.nav.nav-pills.nav-stacked
       .row
         .col-md-3
           img.img-circle(src='https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAcHAAAAJDliNTc1NzFjLTIzN2EtNDA0NS1iN2JjLWIyMzUyOGY3ZDA3Ng.jpg')
@@ -33,6 +43,7 @@ block content
 
             li
               a(href='/category/c') Category C
+
 
 
 

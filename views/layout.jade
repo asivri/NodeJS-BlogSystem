@@ -18,10 +18,16 @@ html(lang='en')
           ul.nav.navbar-nav
               li
                 a(href='/about') About
+
+              li
+                a(href='/panel') Admin
           ul.nav.navbar-nav.navbar-right
               li
-                a(href='/users/contact') Contact
+                a(href='/contact') Contact
 
+              if admin
+                li
+                  a(href='/admin/logout') Logout
 
     .container
       block content

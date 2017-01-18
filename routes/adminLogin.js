@@ -78,4 +78,10 @@ passport.use(new localStrategy(function (email, password, done) {
     })
 }));
 
+router.get('/logout', function (req, res) {
+    req.logout();
+    req.flash('success', 'Logged out!');
+    res.redirect('/admin/login');
+});
+
 module.exports = router;
