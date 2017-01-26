@@ -1,0 +1,38 @@
+//Created by Ahmet on 1/26/2017.
+
+extends layout
+
+block content
+    h2.page-header Add Post
+
+    body
+
+        h1 Add a New Post
+        br
+        ul.erros
+            if errors
+                each error, i in errors
+                    li.alert.alert-danger #{error.msg}
+
+        form(method='post', action='/posts/add',
+        enctype="multipart/form-data")
+            .form-group
+                label Title
+                input.form-control(name='title', type='text')
+            .form-group
+                label Article
+                textarea.form-control(name='body', id='body')
+            .form-group
+                label Image
+                input.form-control(name='postImage', type='file')
+            .form-group
+                label Category
+                select.form-control(name='author')
+                    option(value='Category 1') Category 1
+                    option(value='Category 2') Category 2
+                    option(value='Category 3') Category 3
+            .form-group
+                label Author
+                select.form-control(name='author')
+                    option(value='Ahmet Sivri') Ahmet Sivri
+            input.btn.btn-success(name='submit', type='submit', value='Publish Post')

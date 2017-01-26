@@ -24,9 +24,4 @@ router.get('/',function(req, res, next) {
 // }
 
 
-router.get('/panel', function(req, res) {
-  res.render('panel');
-});
-
-
 module.exports = router;

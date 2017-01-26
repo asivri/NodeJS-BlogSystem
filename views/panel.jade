@@ -7,44 +7,12 @@ block content
 
     body
         div
-            // Nav tabs
-            ul.nav.nav-tabs(role='tablist')
-                li.active(role='presentation')
-                    a(href='#overview', aria-controls='overview', role='tab', data-toggle='tab') Overview
-                li.dropdown
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                        | Posts
-                        span.caret
-                    ul.dropdown-menu
-                        li
-                            a(href='#add', aria-controls='add', role='tab', data-toggle='tab') Add Post
-                        li
-                            a(href='#display', aria-controls='display', role='tab', data-toggle='tab') Display
-                li(role='presentation')
-                    a(href='#categories', aria-controls='categories', role='tab', data-toggle='tab') Categories
-                li(role='presentation')
-                    a(href='#comments', aria-controls='messages', role='tab', data-toggle='tab') Comments
-            br
-            br
-            // Tab panes
-            .tab-content
-                #overview.tab-pane.fade.in.active(role='tabpanel')
-                    h1 First Panel
-                    P Show the stat here
-                #add.tab-pane(role='tabpanel')
-                    h1 Second Panel
-                    p Add new post
-                    a.btn.btn-success(href='/post/add', role='button') Add New Post
-                #display.tab-pane(role='tabpanel')
-                    h1 Third Panel
-                    p Display and manage all posts here.
-                #categories.tab-pane(role='tabpanel')
-                    h1 Fourth Panel
-                    p Manage Categories here
-                    a.btn.btn-success(href='/category/add', role='button') Add New Category
-                #comments.tab-pane(role='tabpanel')
-                    h1 Fifth Panel
-                    p Show and manage the comments here.
+            a.btn.btn-info(href='/posts/add', role='button') Add Post
+
+
+
+
+
 
 
 

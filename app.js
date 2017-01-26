@@ -22,6 +22,10 @@ var upload = multer({dest: './images'});
 
 var routes = require('./routes/index');
 var admin = require('./routes/adminLogin');
+var posts = require('./routes/posts');
+var panel = require('./routes/panel');
+
+
 
 
 var app = express();
@@ -90,6 +94,9 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/admin', admin);
+app.use('/panel', panel);
+app.use('/posts', posts)
+
 
 
 // catch 404 and forward to error handler
