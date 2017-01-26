@@ -25,6 +25,7 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
+    "quill": "^1.2.0",
     "serve-favicon": "~2.3.0"
   }
 }

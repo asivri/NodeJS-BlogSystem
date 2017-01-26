@@ -5,9 +5,21 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var upload = multer({dest: './images'});
+var mongoDB = require('mongodb');
+var db = require('monk')('localhost/blogSystem');
+//var quill = require('quill'); //TODO: Implement it after CKEditor.
+//var editor = new Quill('#editor');
 
 router.get('/add', function (req, res, next) {
-    res.render('addPost');
+    var categories = db.get('categories');
+
+    categories.find({}, {}, function (err, categories){
+        {
+            res.render('addPost',{
+                'categories': categories
+            });
+        }
+    })
 });
 
 router.post('/add', upload.single('postImage'), function(req, res, next)
@@ -22,6 +34,9 @@ router.post('/add', upload.single('postImage'), function(req, res, next)
     {
         var postImage = req.file.filename;
     }
+
+    req.checkBody('title', 'Please type the required fields!');
+    req.checkBody('body', 'Please type the required fields!');
 
     console.log(title);
     console.log(body);
@@ -52,7 +67,7 @@ router.post('/add', upload.single('postImage'), function(req, res, next)
             }
         });
     }
-
 });
+
 
 module.exports = router;

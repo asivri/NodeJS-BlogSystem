@@ -19,16 +19,21 @@ var passportLocal = require('passport-local').Strategy; //Special for PassportJS
 //Multer setup (For the file upload processes)
 var multer = require('multer');
 var upload = multer({dest: './images'});
+var moment = require('moment');
+//var quill = require('quill'); //TODO: Implement it after CKEditor.
+
 
 var routes = require('./routes/index');
 var admin = require('./routes/adminLogin');
 var posts = require('./routes/posts');
 var panel = require('./routes/panel');
-
+var category = require('./routes/category');
 
 
 
 var app = express();
+
+app.locals.moment = require('moment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -95,7 +100,9 @@ app.use(function(req,res,next){
 app.use('/', routes);
 app.use('/admin', admin);
 app.use('/panel', panel);
-app.use('/posts', posts)
+app.use('/posts', posts);
+app.use('/category', category);
+
 
 
 
@@ -129,6 +136,16 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+//
+// var editor = new Quill('#editor',{
+//   modules: {
+//     'toolbar': {container: '#toolbar'},
+//     'link-tooltip': true,
+//     'image-tooltip': true
+//   },
+//   theme: 'snow'
+// });
 
 
 module.exports = app;
