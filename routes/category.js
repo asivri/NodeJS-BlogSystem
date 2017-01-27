@@ -6,6 +6,18 @@ var router = express.Router();
 var mongoDB = require('mongodb');
 var db = require('monk')('localhost/blogSystem');
 
+router.get('/:category', function (req, res, next) {
+    var posts = db.get('posts');
+    //TODO: Fix the category view
+    posts.find({category: req.params.category}, {}, function (err, posts){
+        res.render('index',{
+            'title': req.params.category,
+            'posts': posts
+        });
+        console.log(category);
+    });
+});
+
 router.get('/add', function (req, res, next) {
     res.render('addCategory');
 });

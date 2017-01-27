@@ -35,6 +35,10 @@ var app = express();
 
 app.locals.moment = require('moment');
 
+app.locals.shortText = function(text, length){
+  var shortedText = text.substring(0, length);
+  return shortedText;
+};
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

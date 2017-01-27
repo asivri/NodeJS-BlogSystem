@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -10,6 +10,20 @@ a {
 
 h6 {
   text-decoration: underline;
+}
+
+h5{
+  color: #fffcf6;
+}
+
+.post img{
+  width: 60%;
+  display: flex;
+  display: -webkit-flex;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+
 }
 
 /* Credit to bootsnipp.com for the css for the color graph */
@@ -30,5 +44,6 @@ h5 {
 }
 
 .meta{
-  background-color: #9d9d9d;
+  background-color: #8a1708;
 }
+
