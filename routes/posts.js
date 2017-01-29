@@ -34,48 +34,6 @@ router.get('/add', function (req, res, next) {
     })
 });
 
-router.post('/add', upload.single('postImage'), function(req, res, next)
-{
-    var title = req.body.title;
-    var category = req.body.category;
-    var body = req.body.body;
-    var author = req.body.author;
-    var date = new Date();
-
-    if(req.file)
-    {
-        var postImage = req.file.filename;
-    }
-
-    req.checkBody('title', 'Please type the required fields!');
-    req.checkBody('body', 'Please type the required fields!');
-
-    var errors = req.validationErrors();
-
-    if(!errors)
-    {
-        var posts = db.get('posts');
-        posts.insert({
-            "title": title,
-            "body": body,
-            "postImage": postImage,
-            "category": category,
-            "author": author
-        }, function (err, post) {
-            if(err)
-            {
-                throw err;
-            }
-            else
-            {
-                req.flash('success', 'The Post Added');
-                res.location('/');
-                res.redirect('/'); //TODO: Change the redirect address.
-            }
-        });
-    }
-});
-
 router.post('/comment/add', function(req, res, next)
 {
     var name = req.body.name;

@@ -7,10 +7,76 @@ block content
 
     body
         div
-            a.btn.btn-info(href='/posts/add', role='button') Add Post
+            // Nav tabs
+            ul.nav.nav-tabs(role='tablist')
+                li.active(role='presentation')
+                    a(href='#overview', aria-controls='overview', role='tab', data-toggle='tab') Overview
+                li.dropdown
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | Posts
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a(href='#add', aria-controls='add', role='tab', data-toggle='tab') Add Post
+                        li
+                            a(href='#display', aria-controls='display', role='tab', data-toggle='tab') Display
+                li(role='presentation')
+                    a(href='#categories', aria-controls='categories', role='tab', data-toggle='tab') Categories
+                li(role='presentation')
+                    a(href='#comments', aria-controls='messages', role='tab', data-toggle='tab') Comments
             br
             br
-            a.btn.btn-info(href='/category/add', role='button') Add Category
+            // Tab panes
+            .tab-content
+                #overview.tab-pane.fade.in.active(role='tabpanel')
+                    h1 First Panel
+                    P Show the stat here
+                #add.tab-pane(role='tabpanel')
+                    h1 Add a New Post
+                    br
+                    ul.erros
+                        if errors
+                            each error, i in errors
+                                li.alert.alert-danger #{error.msg}
+
+                    form(method='post', action='/posts/add',
+                    enctype="multipart/form-data")
+                        .form-group
+                            label Title
+                            input.form-control(name='title', type='text')
+                        .form-group
+                            label Article
+                            textarea.form-control(name='body', id='body')
+                        .form-group
+                            label Image
+                            input.form-control(name='postImage', type='file')
+                        .form-group
+                            label Category
+                            select.form-control(name='category')
+                                each category, i in categories
+                                    option(value='#{category.name}') #{category.name}
+                        input.btn.btn-success(name='submit', type='submit', value='Publish Post')
+                        script(src='/ckeditor/ckeditor.js')
+                        script
+                            | CKEDITOR.replace('body');
+                #display.tab-pane(role='tabpanel')
+                    h1 Third Panel
+                    br
+                    if posts
+                        each post, i in posts
+                            .post
+                                | Title: #{post.title}
+                                | Category#{post.category}
+
+                    hr
+
+                #categories.tab-pane(role='tabpanel')
+                    h1 Fourth Panel
+                    p Manage Categories here
+                    a.btn.btn-success(href='/category/add', role='button') Add New Category
+                #comments.tab-pane(role='tabpanel')
+                    h1 Fifth Panel
+                    p Show and manage the comments here.
 
 
 
