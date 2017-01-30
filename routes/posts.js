@@ -27,7 +27,7 @@ router.get('/add', function (req, res, next) {
 
     categories.find({}, {}, function (err, categories){
         {
-            res.render('addPost',{
+             res.render('addPost',{
                 'categories': categories
             });
         }
@@ -57,7 +57,7 @@ router.post('/comment/add', function(req, res, next)
             "site": site,
             "body": body,
             "commentdate": commentDate
-        }
+        };
 
         var posts = db.get('posts');
 

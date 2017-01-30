@@ -39,7 +39,7 @@ block content
                             each error, i in errors
                                 li.alert.alert-danger #{error.msg}
 
-                    form(method='post', action='/posts/add',
+                    form(method='post', action='/panel/add',
                     enctype="multipart/form-data")
                         .form-group
                             label Title
@@ -60,13 +60,18 @@ block content
                         script
                             | CKEDITOR.replace('body');
                 #display.tab-pane(role='tabpanel')
-                    h1 Third Panel
+                    h1 Display Posts Panel
                     br
                     if posts
                         each post, i in posts
                             .post
-                                | Title: #{post.title}
-                                | Category#{post.category}
+                                a(href='/posts/show/#{post._id}')=post.title
+                                | Category: #{post.category}
+                                form(method='post', action='/panel/delete')
+                                    input.btn.btn-danger(type='submit', value='Delete')
+                                form(method='post', action='/panel/update')
+                                    input.btn.btn-warning(type='submit', value='Edit')
+                                hr
 
                     hr
 
