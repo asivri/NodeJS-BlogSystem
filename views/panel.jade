@@ -67,17 +67,28 @@ block content
                             .post
                                 a(href='/posts/show/#{post._id}')=post.title
                                 | Category: #{post.category}
-                                form(method='post', action='/panel/delete')
+                                form(method='post', action='/panel/delete/post/#{post._id}')
                                     input.btn.btn-danger(type='submit', value='Delete')
-                                form(method='post', action='/panel/update')
+                                form(method='post', action='/panel/edit/post')
                                     input.btn.btn-warning(type='submit', value='Edit')
                                 hr
 
                     hr
 
                 #categories.tab-pane(role='tabpanel')
-                    h1 Fourth Panel
-                    p Manage Categories here
+                    h1 Category Panel
+                    br
+                    hr
+                    if categories
+                        each category, i in categories
+                            .category
+                               p #{category.name}
+                                   form(method='post', action='/panel/delete/category')
+                                       input.btn.btn-danger(type='submit', value='Delete')
+                                   form(method='post', action='/panel/edit/category')
+                                       input.btn.btn-warning(type='submit', value='Edit')
+                               hr
+
                     a.btn.btn-success(href='/category/add', role='button') Add New Category
                 #comments.tab-pane(role='tabpanel')
                     h1 Fifth Panel

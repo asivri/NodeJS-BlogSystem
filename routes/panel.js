@@ -8,35 +8,12 @@ var upload = multer({dest: './public/images'});
 var mongoDB = require('mongodb');
 var db = require('monk')('localhost/blogSystem');
 const monk = require('monk');
-// var mongoose = require('mongoose');
-// // mongoose.connect('mongodb://localhost/blogSystem');
-// var Schema = mongoose.Schema;
-// // var database = mongoose.connection;
-//
-// var postSchema =Schema({
-//     title:{
-//         type: String
-//     },
-//     body: {
-//         type: String
-//     },
-//     "postImage":{
-//         data: Buffer,
-//         type: String
-//     },
-//     "category":{
-//         type: String
-//     },
-//     "author":{
-//         type: String
-//     }
-// }, {collection: 'post'});
-//
-// var PostAdmin = module.exports = mongoose.model('PostAdmin', postSchema);
+var posts = db.get('posts');
+var categories = db.get('categories');
 
 router.get('/', function (req, res, next) {
-    var categories = db.get('categories');
-    var posts = db.get('posts');
+
+    //var posts = db.get('posts');
 
     categories.find({}, {}, function (err, categories){
         {
@@ -73,7 +50,7 @@ router.post('/add', upload.single('postImage'), function(req, res, next)
 
     if(!errors)
     {
-        var posts = db.get('posts');
+        //var posts = db.get('posts');
         posts.insert({
                 "title": title,
                 "body": body,
@@ -95,10 +72,11 @@ router.post('/add', upload.single('postImage'), function(req, res, next)
     }
 });
 
-router.post('/delete', function(req, res, next)
+router.post('/delete/post/:id', function(req, res, next)
 {
-    var posts = db.get('posts');
-    id = req.body.id;
+
+    id = req.params.id;
+    console.log("The id is" + id);
     posts.findOneAndDelete(id, function (err, post) {
         if(err)
         {
@@ -109,9 +87,37 @@ router.post('/delete', function(req, res, next)
             res.redirect('/');
         }
     });
-
 });
 
 
+
+router.post('/edit/post', function(req, res, next)
+{
+    var post = {
+        title : req.body.title,
+        category : req.body.category,
+        body : req.body.body
+    };
+
+    var id= req.body.id;
+    posts.updateById(id, post);
+});
+
+router.post('/delete/category', function(req, res, next)
+{
+    id = req.params.id;
+    console.log("Hello console");
+    console.log(id);
+    posts.findOneAndDelete(id, function (err, post) {
+        if(err)
+        {
+            console.log(err);
+        }
+        else {
+            res.location('/');
+            res.redirect('/');
+        }
+    });
+});
 
 module.exports = router;
